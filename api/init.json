@@ -21,6 +21,26 @@
           "icon": "fa fa-home",
           "target": "_self"
         },
+		{
+		      "title": "用户管理",
+		      "icon": "fa fa-group",
+		      "href": "",
+		      "target": "_self",
+		      "child": [
+		        {
+		          "title": "管理员维护",
+		          "href": "page/queryUser.html",
+		          "icon": "fa fa-plus-square",
+		          "target": "_self"
+		        },
+		        {
+		          "title": "个人信息维护",
+		          "href": "page/editUser.html",
+		          "icon": "fa fa-search-plus",
+		          "target": "_self"
+		        }
+		  ]
+		},
         {
           "title": "院系管理",
           "href": "",

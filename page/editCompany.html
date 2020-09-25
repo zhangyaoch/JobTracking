@@ -17,6 +17,12 @@
 </head>
 <body>
 <div class="layui-form layuimini-form">
+	<div class="layui-form-item">
+	    <label class="layui-form-label ">企业编号</label>
+	    <div class="layui-input-block" >
+	        <input id="cid" type="text"   name="id" value='0' class="layui-input">
+	    </div>
+	</div>
     <div class="layui-form-item">
         <label class="layui-form-label required">企业名称</label>
         <div class="layui-input-block" >
@@ -27,12 +33,6 @@
         <label class="layui-form-label ">总部所在城市</label>
         <div class="layui-input-block" >
             <input id="city" type="text" name="city"  value="北京" class="layui-input">
-        </div>
-    </div>
-    <div class="layui-form-item">
-        <label class="layui-form-label ">总部详细地址</label>
-        <div class="layui-input-block" >
-            <input id="address" type="text" name="address" value="北京市海淀区" class="layui-input">
         </div>
     </div>
     <div class="layui-form-item">
@@ -60,18 +60,12 @@
         </div>
     </div>
     <div class="layui-form-item">
-        <label class="layui-form-label ">开始合作时间</label>
-        <div class="layui-input-block" >
-            <input id="joinDate" type="text" name="joinDate" placeholder="请选择开始合作时间" value="2019-10-12" class="layui-input" readonly>
-        </div>
-    </div>
-    <div class="layui-form-item">
         <label class="layui-form-label ">合作状态</label>
         <div class="layui-input-block" >
             <select id="status" name="status">
                 <option value="">--请选择合作状态--</option>
                 <option value="1" selected>合作中</option>
-                <option value="2">暂停合作</option>
+                <option value="0">暂停合作</option>
             </select>
         </div>
     </div>
@@ -105,18 +99,13 @@
 
         //监听提交
         form.on('submit(saveBtn)', function (data) {
-            var index = layer.alert(JSON.stringify(data.field), {
-                title: '最终的提交信息'
-            }, function () {
-
-                // 关闭弹出层
-                layer.close(index);
-
-                var iframeIndex = parent.layer.getFrameIndex(window.name);
-                parent.layer.close(iframeIndex);
-
-            });
-
+			console.log(data.field);
+         $.post("http://localhost/updateCompany",data.field,function(data){
+			if(data)
+			layer.alert("修改成功");
+			else
+			layer.alert("修改失败");
+		 })
             return false;
         });
 
